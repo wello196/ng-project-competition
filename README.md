@@ -10,7 +10,7 @@ The application strictly follows an **Enterprise Layered Architecture**, segment
 
 Experience the live application online:
 
-🚀 [**View Live Demo**](https://your-demo-url.vercel.app) *(Replace with your actual deployment link)*
+🚀 [**View Live Demo**](https://ng-project-competition-three.vercel.app/home)
 
 ---
 
