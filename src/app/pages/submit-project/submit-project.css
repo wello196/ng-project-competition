@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+:host {
+  --bg-warm: #F4EFE6;
+  --text-main: #1F1E1C;
+  --text-muted: #6B6862;
+  --accent-rust: #D15638;
+  --border-dark: #1F1E1C;
+  --input-bg: #EFE9DD;
+  --input-focus: #FFFFFF;
+
+  display: block;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-warm);
+  color: var(--text-main);
+  padding: 2.5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.form-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Header */
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-header h2 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+}
+
+.form-header h2 em {
+  font-style: italic;
+  color: var(--accent-rust);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Form Card Container */
+.submission-card {
+  background-color: var(--bg-warm);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 4px 4px 0px var(--border-dark);
+}
+
+/* Grid Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+}
+
+.col-full {
+  grid-column: span 2;
+}
+
+.col-half {
+  grid-column: span 1;
+}
+
+/* Labels and Field Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+}
+
+.req {
+  color: var(--accent-rust);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="datetime-local"],
+select,
+textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  outline: none;
+  transition: all 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: var(--input-focus);
+  border-color: var(--accent-rust);
+  box-shadow: 2px 2px 0px var(--border-dark);
+}
+
+/* Readonly fields */
+.input-readonly {
+  background-color: rgba(31, 30, 28, 0.05) !important;
+  color: var(--text-muted) !important;
+  cursor: not-allowed;
+}
+
+/* Input Prefixes */
+.input-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.input-prefix {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background-color: rgba(31, 30, 28, 0.08);
+  border: 1.5px solid var(--border-dark);
+  border-right: none;
+  padding: 0.75rem 0.75rem;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.input-with-icon input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Textarea customization */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Actions Footer */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(31, 30, 28, 0.2);
+}
+
+/* Buttons */
+.btn-pri, .btn-sec {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-pri {
+  background-color: var(--accent-rust);
+  color: #FFFFFF;
+  border: 1.5px solid var(--border-dark);
+  box-shadow: 2.5px 2.5px 0px var(--border-dark);
+}
+
+.btn-pri:hover {
+  background-color: #B8472B;
+  transform: translate(-1px, -1px);
+  box-shadow: 3.5px 3.5px 0px var(--border-dark);
+}
+
+.btn-sec {
+  background-color: var(--bg-warm);
+  color: var(--text-main);
+  border: 1.5px solid var(--border-dark);
+  box-shadow: 2.5px 2.5px 0px var(--border-dark);
+}
+
+.btn-sec:hover {
+  background-color: #FAF6EE;
+  transform: translate(-1px, -1px);
+  box-shadow: 3.5px 3.5px 0px var(--border-dark);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .col-half {
+    grid-column: span 2;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-pri, .btn-sec {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,135 @@
+@if(whenLoading()) {
+  <app-loader></app-loader>
+}
+@else{
+  <div class="register-container">
+  <div class="form-card">
+    <div class="form-header">
+      <span class="eyebrow">— 2026 Innovation Challenge</span>
+      <h2>Join the <em>Competition.</em></h2>
+      <p class="subtitle">Fill out your details below to complete your registration.</p>
+    </div>
+
+    <form class="register-form" [formGroup]="form">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. waleed mohamed" formControlName="fullName">
+      </div>
+      @if(fullName?.invalid&&(fullName?.dirty||fullName?.touched)){
+        @if(fullName.hasError('required')){
+            <app-alert>Full name is required</app-alert>
+        }
+        @if(fullName.hasError('minlength')){
+            <app-alert>Full name must be at least 6 characters</app-alert>
+        }
+        @if(fullName.hasError('maxlength')){
+            <app-alert>Full name must be at most 20 characters</app-alert>
+        }
+        @if(fullName.hasError('hasNumber')){
+            <app-alert>Full name must not contain numbers</app-alert>
+        }
+      }
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="e.g.@example.com" formControlName="email">
+      </div>
+      @if(email?.invalid&&(email?.dirty||email?.touched)){
+        @if(email.hasError('required')){
+            <app-alert>Email is required</app-alert>
+        }
+        @if(email.hasError('email')){
+            <app-alert>Please enter a valid email address</app-alert>
+        }
+      }
+
+      <div class="form-group" formGroupName="passwordGroup">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" formControlName="password" >
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" formControlName="confirmPassword" >
+      </div>
+     
+      @if(password?.invalid&&(password?.dirty||password?.touched)){
+        @if(password.hasError('required')){
+            <app-alert>Password is required</app-alert>
+        }
+        @if(password.hasError('minlength')){
+            <app-alert>Password must be at least 8 characters</app-alert>
+        }
+        @if(password.hasError('pattern')){
+            <app-alert>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</app-alert>
+        }
+
+      }
+       @if(passwordGroup?.hasError('passwordNotMatch')){
+            <app-alert>Passwords do not match</app-alert>
+        }
+
+      <div class="form-group">
+        <label for="collegeName">College Name</label>
+        <input type="text" id="collegeName" name="collegeName" placeholder="e.g. Faculty of Engineering " formControlName="collegeName" >
+      </div>
+      @if(collegeName?.invalid&&(collegeName?.dirty||collegeName?.touched)){
+        @if(collegeName.hasError('required')){
+            <app-alert>College name is required</app-alert>
+        }
+        @if(collegeName.hasError('minlength')){
+            <app-alert>College name must be at least 6 characters</app-alert>
+        }
+        @if(collegeName.hasError('maxlength')){
+            <app-alert>College name must be at most 20 characters</app-alert>
+        }
+        @if(collegeName.hasError('hasNumber')){
+            <app-alert>College name must not contain numbers</app-alert>
+        }
+      }
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <div class="select-wrapper">
+          <select id="role" name="role" formControlName="role" >
+            <option value="" disabled selected>Select your role</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Fullstack Developer">Fullstack Developer</option>
+            <option value="UI/UX Designer">UI/UX Designer</option>
+            <option value="Project Manager">Project Manager</option>
+            <option value="Data Scientist">Data Scientist</option>
+          </select>
+        </div>
+      </div>
+      @if(role?.invalid&&(role?.dirty||role?.touched)){
+        @if(role.hasError('required')){
+            <app-alert>Role is required</app-alert>
+        }
+      }
+      @if(errMessage()){
+            <app-alert>{{errMessage()}}</app-alert>
+      }
+
+      <button type="submit" class="btn-submit" (click)="onRegister()">Submit Application →</button>
+    </form>
+
+    <p class="form-footer">Already have an account? <a routerLink="/login" style="color: black;"><b>Sign in</b></a></p>
+   
+    <app-cautious>
+      For demonstration purposes, you can access the website with full administrator privileges using the demo credentials below:
+<br>
+<br>
+Admin Email: collegeAdmin@gmail.com
+<br>
+Admin Password: College123@
+<br>
+<br>
+If you would like to explore the platform as a student instead, simply complete the registration form to create a student account.
+    </app-cautious>
+</div>
+</div>
+}
+
+
+
+ 
+
+  

@@ -1,0 +1,56 @@
+
+  @if(whenLoading()){
+    <app-loader></app-loader>
+  }
+  @else{
+    <div class="login-container">
+  <div class="form-card">
+    <div class="form-header">
+      <span class="eyebrow">— Welcome Back</span>
+      <h2>Sign in to <em>Continue.</em></h2>
+      <p class="subtitle">Enter your credentials to access your competition dashboard.</p>
+    </div>
+
+    <form class="login-form" [formGroup]="form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="e.g.@example.com" formControlName="email" >
+      </div>
+
+      <div class="form-group">
+        <div class="label-row">
+          <label for="password">Password</label>
+          <a href="#forgot-password" class="forgot-link">Forgot?</a>
+        </div>
+        <input type="password" id="password" name="password" placeholder="••••••••" formControlName="password" >
+      </div>
+
+        @if(errMessage()){
+            <app-alert>{{errMessage()}}</app-alert>
+        }
+          
+      
+
+      <button type="submit" class="btn-submit" (click)="onLogin()">Sign In →</button>
+    </form>
+
+    <p class="form-footer">Don't have an account? <a routerLink="/register" style="color: black;"><b>Sign up</b></a></p>
+    <app-cautious>
+      For demonstration purposes, you can access the website with full administrator privileges using the demo credentials below:
+      <br>
+      <br>
+      Admin Email: collegeAdmin@gmail.com
+      <br>
+      Admin Password: College123@
+    <br>
+    <br>
+    If you would like to explore the platform as a student instead, simply complete the registration form to create a student account.
+    </app-cautious>
+  </div>
+     
+</div>
+
+
+
+  }
+  

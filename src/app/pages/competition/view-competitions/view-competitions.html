@@ -1,0 +1,49 @@
+
+
+
+    <div class="competitions-grid">
+      <!-- Active / Featured Competition Card -->
+       @for(comp of visibleCompetitions(); track comp.competitionId){
+        <article class="comp-card featured">
+        <div class="card-header">
+          <span class="status-badge active">{{comp.status}}</span>
+          <span class="comp-id">{{$index+1}}</span>
+        </div>
+
+        <div class="card-body">
+          <h3 class="comp-title">{{comp.title}}</h3>
+          <p class="comp-desc">
+            {{comp.description}}
+          </p>
+
+          <div class="date-range">
+            <div class="date-item">
+              <span class="date-label">Starts</span>
+              <time datetime="2026-09-21T15:05:59.052Z">{{comp.startDate}}</time>
+            </div>
+            <div class="date-separator">→</div>
+            <div class="date-item">
+              <span class="date-label">Ends</span>
+              <time datetime="2026-09-21T15:05:59.052Z">{{comp.endDate}}</time>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button type="button" class="btn-card btn-pri" [routerLink]="['/competitions','submit-project',comp.competitionId]">View Details &amp; Register →</button>
+        </div>
+      </article>
+          
+      
+
+       }
+       
+    </div>
+     @if(hasMore()){
+        <div class="card-footer" style="margin:30px auto 0 auto;width: 30%;">
+        <button  type="button" class="btn-card btn-pri" (click)="loadMore()">Load More →</button>
+      </div>
+    }
+   
+  
+

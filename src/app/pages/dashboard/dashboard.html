@@ -1,0 +1,147 @@
+ @defer (when whenReady()) {
+    @if(!errorMessage()){
+        <div class="dashboard-container">
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-content">
+      <span class="eyebrow">— Platform Overview</span>
+
+      <h2>
+        System <em>Analytics.</em>
+      </h2>
+
+      <p class="subtitle">
+        Real-time metrics for users, challenges, and project submissions.
+      </p>
+    </div>
+
+   
+  </header>
+
+ 
+  <!-- Hero Statistics -->
+  <section class="hero-stats">
+
+    <!-- Users -->
+    <article class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label">Total Platform Users</span>
+        <span class="stat-badge">Active</span>
+      </div>
+
+      <div class="stat-value">{{data().totalUsers}}</div>
+
+      <div class="stat-desc">
+        Registered creators &amp; team members
+      </div>
+    </article>
+
+
+    <!-- Competitions -->
+    <article class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label">Total Competitions</span>
+        <span class="stat-badge">All-Time</span>
+      </div>
+
+      <div class="stat-value">{{data().totalCompetitions}}</div>
+
+      <div class="stat-desc">
+        Hosted challenges across all tracks
+      </div>
+    </article>
+
+
+    <!-- Submissions -->
+    <article class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label">Total Submissions</span>
+        <span class="stat-badge">Projects</span>
+      </div>
+
+      <div class="stat-value">{{data().totalProjectSubmissions}}</div>
+
+      <div class="stat-desc">
+        Projects delivered for evaluation
+      </div>
+    </article>
+
+  </section>
+
+
+  <!-- Analytics Sections -->
+  <section class="analytics-grid">
+
+    <!-- Challenges -->
+    <article class="section-card">
+
+      <div class="card-title">
+        <span class="eyebrow">— Challenges</span>
+        <h3>Competitions Breakdown</h3>
+      </div>
+
+      <div class="metrics-list">
+
+        <!-- Ongoing -->
+        <div class="metric-row accent-row">
+          <div class="metric-meta">
+            <span class="status-indicator active"></span>
+            <span class="metric-name">Ongoing Competitions</span>
+          </div>
+
+          <span class="metric-count highlight">{{data().ongoingCompetitions}}</span>
+        </div>
+
+
+        <!-- Upcoming -->
+        <div class="metric-row">
+          <div class="metric-meta">
+            <span class="status-indicator upcoming"></span>
+            <span class="metric-name">Upcoming Competitions</span>
+          </div>
+
+          <span class="metric-count">{{data().upcomingCompetitions}}</span>
+        </div>
+
+
+        <!-- Completed -->
+        <div class="metric-row">
+          <div class="metric-meta">
+            <span class="status-indicator completed"></span>
+            <span class="metric-name">Completed Competitions</span>
+          </div>
+
+          <span class="metric-count">{{data().completedCompetitions}}</span>
+        </div>
+
+
+        <!-- Winners -->
+        <div class="metric-row">
+          <div class="metric-meta">
+            <span class="status-indicator winner"></span>
+            <span class="metric-name">Winners Declared</span>
+          </div>
+
+          <span class="metric-count winner-count">{{data().winnersDeclared}}</span>
+        </div>
+
+      </div>
+
+    </article>
+
+
+
+
+  </section>
+
+</div>
+    }
+    @else {
+        <h1>{{errorMessage()}}</h1>
+    }
+    
+  }
+  @placeholder {
+    <app-loader></app-loader>
+  }

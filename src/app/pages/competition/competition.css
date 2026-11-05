@@ -1,0 +1,641 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+  :host {
+    --bg-warm: #F4EFE6;
+    --text-main: #1F1E1C;
+    --text-muted: #6B6862;
+    --accent-rust: #D15638;
+    --border-dark: #1F1E1C;
+    --input-bg: #EFE9DD;
+    --status-active-bg: #E2EFCB;
+    --status-active-text: #2A5216;
+
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    display: block;
+    background-color: var(--bg-warm);
+    min-height: 100vh;
+    color: var(--text-main);
+    padding: 3rem 1.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .crud-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  box-sizing: border-box;
+}
+
+  /* Page Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-text h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .header-text h2 em {
+    font-style: italic;
+    color: var(--accent-rust);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    background-color: var(--bg-warm);
+    border: 1.5px solid var(--border-dark);
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    box-shadow: 2.5px 2.5px 0px var(--border-dark);
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3.5px 3.5px 0px var(--border-dark);
+    background-color: #FAF6EE;
+  }
+
+  .btn-secondary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    color: var(--text-main);
+    cursor: pointer;
+  }
+
+  /* Table Styling */
+  .table-card {
+  width: 100%;
+  max-width: 100%;
+  max-height: 500px;
+
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+  background-color: var(--bg-warm);
+  box-shadow: 4px 4px 0px var(--border-dark);
+
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.crud-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+  .crud-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    padding: 1rem 1.25rem;
+    border-bottom: 1.5px solid var(--border-dark);
+    background-color: rgba(31, 30, 28, 0.03);
+  }
+
+  .crud-table td {
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(31, 30, 28, 0.12);
+    vertical-align: top;
+  }
+
+  .crud-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .id-cell {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .title-cell strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+
+  .desc-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0 0;
+    line-height: 1.4;
+  }
+
+  .date-cell {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-dark);
+    background-color: var(--input-bg);
+    text-transform: uppercase;
+  }
+
+  .status-badge.active {
+    background-color: var(--status-active-bg);
+    color: var(--status-active-text);
+  }
+
+  .status-badge.upcoming {
+    opacity: 0.85;
+  }
+
+  /* Action Buttons */
+  .actions-header, .actions-cell {
+    text-align: right;
+  }
+
+  .actions-cell {
+    white-space: nowrap;
+  }
+
+  .btn-action {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.25rem;
+    text-decoration: underline;
+  }
+
+  .btn-action.edit {
+    color: var(--text-main);
+  }
+
+  .btn-action.delete {
+    color: var(--accent-rust);
+  }
+
+  /* Form Card Container */
+  .form-card-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-card {
+    background-color: var(--bg-warm);
+    border: 1.5px solid var(--border-dark);
+    border-radius: 8px;
+    box-shadow: 6px 6px 0px var(--border-dark);
+    width: 100%;
+    max-width: 580px;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+
+  .form-header h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .form-header h2 em {
+    font-style: italic;
+    color: var(--accent-rust);
+  }
+
+  .crud-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .form-row .form-group {
+    flex: 1;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent-rust);
+    box-shadow: 0 0 0 3px rgba(209, 86, 56, 0.15);
+    background-color: #FAF6EE;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper::after {
+    content: '↓';
+    font-family: 'DM Mono', monospace;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.85rem;
+  }
+
+  .form-group select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+  }
+
+
+  .table-input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0.4rem 0.5rem;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+
+  color: var(--text-main);
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  outline: none;
+}
+
+.table-input:disabled {
+  color: var(--text-main);
+  background: transparent;
+  cursor: default;
+  opacity: 1;
+}
+
+.table-input:not(:disabled) {
+  background-color: var(--input-bg);
+  border-color: var(--border-dark);
+}
+
+.table-input:not(:disabled):focus {
+  border-color: var(--accent-rust);
+  box-shadow: 0 0 0 2px rgba(209, 86, 56, 0.15);
+}
+
+.table-textarea {
+  display: block;
+  margin-top: 0.35rem;
+  resize: vertical;
+}
+
+.table-input[type="datetime-local"] {
+  min-width: 170px;
+}
+
+
+
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  /* Dark background behind modal */
+  background: rgba(0, 0, 0, 0.65);
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background-color: var(--bg-warm);
+
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+
+  box-shadow: 8px 8px 0 var(--border-dark);
+
+  padding: 2rem;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MODAL HEADER
+========================= */
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 2rem;
+}
+
+.modal-eyebrow {
+  display: block;
+
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+
+  color: var(--text-muted);
+
+  margin-bottom: 0.4rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.modal-header h2 em {
+  color: var(--accent-rust);
+  font-style: italic;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.modal-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: 1px solid var(--border-dark);
+  border-radius: 5px;
+
+  font-size: 1.4rem;
+  line-height: 1;
+
+  color: var(--text-main);
+
+  cursor: pointer;
+
+  transition: all 0.15s ease;
+}
+
+.modal-close:hover {
+  background-color: var(--text-main);
+  color: var(--bg-warm);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.modal-form label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  color: var(--text-main);
+}
+
+.modal-form input,
+.modal-form textarea,
+.modal-form select {
+  width: 100%;
+
+  padding: 0.75rem 0.9rem;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+
+  color: var(--text-main);
+  background-color: var(--input-bg);
+
+  border: 1px solid var(--border-dark);
+  border-radius: 6px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition: all 0.2s ease;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus,
+.modal-form select:focus {
+  border-color: var(--accent-rust);
+
+  box-shadow:
+    0 0 0 3px rgba(209, 86, 56, 0.15);
+
+  background-color: #FAF6EE;
+}
+
+.modal-form textarea {
+  resize: vertical;
+}
+
+
+/* =========================
+   TWO COLUMN ROW
+========================= */
+
+.modal-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-form .form-row .form-group {
+  flex: 1;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  margin-top: 0.75rem;
+  padding-top: 1.25rem;
+
+  border-top: 1px solid rgba(31, 30, 28, 0.15);
+}
+
+
+/* Reuse your existing button style,
+   but these make them fit the modal */
+
+.modal-actions .btn-primary {
+  padding: 0.7rem 1.2rem;
+}
+
+.modal-actions .btn-secondary {
+  padding: 0.7rem 1.2rem;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal-card {
+    padding: 1.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 2rem;
+  }
+
+  .modal-form .form-row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}

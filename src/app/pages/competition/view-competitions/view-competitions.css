@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+:host {
+  --bg-warm: #F4EFE6;
+  --text-main: #1F1E1C;
+  --text-muted: #6B6862;
+  --accent-rust: #D15638;
+  --border-dark: #1F1E1C;
+  --input-bg: #EFE9DD;
+  --status-active-bg: #E2EFCB;
+  --status-active-text: #2A5216;
+  --status-upcoming-bg: #EFE9DD;
+  --status-upcoming-text: #6B6862;
+
+  
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: var(--text-main);
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+
+
+.competitions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  gap: 3rem;
+  width: 100%;
+}
+
+.comp-card {
+  background-color: var(--bg-warm);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 4px 4px 0px var(--border-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+   margin-bottom: 50px
+}
+
+.comp-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--border-dark);
+}
+
+.comp-card.featured {
+  border-width: 2px;
+  background-color: #FAF6EE;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.status-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-dark);
+  background-color: var(--status-upcoming-bg);
+  color: var(--status-upcoming-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-badge.active {
+  background-color: var(--status-active-bg);
+  color: var(--status-active-text);
+}
+
+.comp-id {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.comp-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+.comp-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+}
+
+.date-range {
+  display: flex;
+  justify-content: space-between;
+  align-items:center ;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--input-bg);
+  border: 1px solid rgba(31, 30, 28, 0.15);
+  border-radius: 6px;
+  margin-bottom: 1.75rem;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+time {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.date-separator {
+  font-family: 'DM Mono', monospace;
+  color: var(--accent-rust);
+  font-size: 0.9rem;
+}
+
+.btn-card {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: var(--bg-warm);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2.5px 2.5px 0px var(--border-dark);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3.5px 3.5px 0px var(--border-dark);
+  background-color: #FAF6EE;
+}
+
+.btn-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--border-dark);
+}
+
+.btn-card.btn-pri {
+  background-color: var(--accent-rust);
+  color: #FFFFFF;
+}
+
+.btn-card.btn-pri:hover {
+  background-color: #B8472B;
+}
+
+@media (max-width: 640px) {
+  .section-header h2 {
+    font-size: 2.25rem;
+  }
+
+  .competitions-grid {
+    grid-template-columns: 1fr;
+  }
+}

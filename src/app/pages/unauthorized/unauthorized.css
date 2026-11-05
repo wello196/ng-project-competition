@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+:host {
+  --bg-warm: #F4EFE6;
+  --text-main: #1F1E1C;
+  --text-muted: #6B6862;
+  --accent-rust: #D15638;
+  --border-dark: #1F1E1C;
+  --input-bg: #EFE9DD;
+  --status-error-bg: #FDE8E8;
+  --status-error-text: #9B1C1C;
+
+  display: block;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-warm);
+  min-height: 100vh;
+  color: var(--text-main);
+  box-sizing: border-box;
+}
+
+.unauthorized-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+.unauthorized-card {
+  max-width: 520px;
+  width: 100%;
+  background-color: #FAF6EE;
+  border: 2px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 2.25rem;
+  box-shadow: 6px 6px 0px var(--border-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.status-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-badge.error {
+  background-color: var(--status-error-bg);
+  color: var(--status-error-text);
+  font-weight: 500;
+}
+
+.comp-id {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.error-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+.error-title em {
+  font-style: italic;
+  color: var(--accent-rust);
+}
+
+.error-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 1.75rem 0;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--input-bg);
+  border: 1px solid rgba(31, 30, 28, 0.18);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.info-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.info-separator {
+  font-family: 'DM Mono', monospace;
+  color: var(--accent-rust);
+  opacity: 0.5;
+}
+
+.card-footer {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-card {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: var(--bg-warm);
+  border: 1.5px solid var(--border-dark);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2.5px 2.5px 0px var(--border-dark);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3.5px 3.5px 0px var(--border-dark);
+  background-color: #FFFFFF;
+}
+
+.btn-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--border-dark);
+}
+
+.btn-card.btn-pri {
+  background-color: var(--accent-rust);
+  color: #FFFFFF;
+}
+
+.btn-card.btn-pri:hover {
+  background-color: #B8472B;
+}
+
+@media (max-width: 540px) {
+  .unauthorized-card {
+    padding: 1.5rem;
+  }
+
+  .card-footer {
+    flex-direction: column-reverse;
+  }
+
+  .info-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .info-separator {
+    display: none;
+  }
+}

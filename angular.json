@@ -54,6 +54,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+      "allowedHosts": ["inclusive-hit-remarkable-debug.trycloudflare.com"]
+    },
           "configurations": {
             "production": {
               "buildTarget": "project-competition:build:production"

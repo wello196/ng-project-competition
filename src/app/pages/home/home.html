@@ -1,0 +1,39 @@
+
+<section class="hs-01" aria-label="Hero">
+  <div class="hs-01__inner">
+    <span class="hs-01__eye">— 2026 Innovation Challenge</span>
+    <h2>Build bold ideas <em>that scale.</em></h2>
+    <p>
+      The ultimate arena for creators, engineers, and visionaries to solve real-world problems and pitch to top industry leaders.
+    </p>
+    <div class="hs-01__cta">
+      @if(!isLoggedIn()){
+         <a class="hs-01__btn hs-01__btn-pri" routerLink="/register">Register →</a>
+      }
+     
+      <a class="hs-01__btn" (click)="showCompetitions()">{{toggleSection() ? 'Zip Up' : 'View Competitions'}}</a>
+    </div>
+    <p class="hs-01__foot">$50,000 in prizes · open to all skill levels · free registration</p>
+  </div>
+  
+</section>
+
+@if(toggleSection()){
+  <section class="featured-section">
+    <!-- Section Header -->
+    <div class="section-header">
+      
+      <h2>Explore <em>Competitions.</em></h2>
+      <p class="subtitle">Discover challenges, showcase your skills, and build real-world projects.</p>
+    </div>
+    @defer (when whenReady()) {
+      <app-view-competitions [competitions]="showCompetition()"></app-view-competitions>
+    }
+    @placeholder {
+      <app-loader></app-loader>
+    }
+    
+  
+  </section>
+  
+}

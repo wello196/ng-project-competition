@@ -1,0 +1,150 @@
+<div class="form-container">
+
+  <!-- Header -->
+  <div class="form-header">
+    <span class="eyebrow">SUBMISSION</span>
+
+    <h2>
+      {{competitionTitle()}}<em> Competition</em>
+    </h2>
+
+    <p class="subtitle">
+      Submit your project to a competition.
+    </p>
+  </div>
+
+
+  <!-- Form Card -->
+  <div class="submission-card">
+
+    <form [formGroup]="submitForm">
+
+      <div class="form-grid">
+
+        <!-- Project Title -->
+        <div class="form-group col-full">
+          <label for="projectTitle">
+            Project Title <span class="req">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="projectTitle"
+            placeholder="Enter your project title"
+            formControlName="title"
+          />
+          @if(title?.invalid&&(title?.dirty||title?.touched)){
+            @if(title.hasError('required')){
+                <app-alert>Project title is required</app-alert>
+            }
+        }
+        </div>
+        
+
+
+        <!-- Description -->
+        <div class="form-group col-full">
+          <label for="description">
+            Description <span class="req">*</span>
+          </label>
+
+          <textarea
+            id="description"
+            placeholder="Describe your project..."
+            formControlName="description"
+          ></textarea>
+          @if(description?.invalid&&(description?.dirty||description?.touched)){
+            @if(description.hasError('required')){
+                <app-alert>Description is required</app-alert>
+            }
+        }
+        </div>
+        
+
+
+        <!-- GitHub Link -->
+        <div class="form-group col-full">
+          <label for="githubLink">
+            GitHub Repository <span class="req">*</span>
+          </label>
+
+          <div class="input-with-icon">
+            <span class="input-prefix">github.com/</span>
+
+            <input
+              type="url"
+              id="githubLink"
+              placeholder="username/project"
+              formControlName="link"
+            />
+          </div>
+          @if(link?.invalid&&(link?.dirty||link?.touched)){
+            @if(link.hasError('required')){
+                <app-alert>GitHub link is required</app-alert>
+            }
+        }
+        </div>
+        
+
+
+        
+
+        <!-- Submission Date -->
+        <div class="form-group col-half">
+          <label for="submissionDate">
+            Submission Date
+          </label>
+
+          <input
+            type="datetime-local"
+            id="submissionDate"
+            formControlName="submissionDate"
+          />
+           @if(submissionDate?.invalid&&(submissionDate?.dirty||submissionDate?.touched)){
+            @if(submissionDate.hasError('required')){
+                <app-alert>Submission date is required</app-alert>
+            }
+        }
+        </div>
+       
+
+
+        <!-- Status -->
+
+       
+
+
+        <!-- Rank -->
+       
+
+      </div>
+
+
+      <!-- Actions -->
+      <div class="form-actions">
+
+
+        <button (click)="onSubmitForm()"
+          type="submit"
+          class="btn-pri"
+        >
+          Submit Project
+        </button>
+
+      </div>
+
+    </form>
+   @if (isSubmitted()) {
+      <app-success>Your project has been successfully submitted, we will get back to you soon</app-success>
+
+}
+@if(errMessage()){
+    <app-alert>{{errMessage()}}</app-alert>
+}
+  
+  </div>
+
+</div>
+
+  
+
